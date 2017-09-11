@@ -9,6 +9,7 @@ public class Ch1App0CustomFunctionalInterface {
 			}
 		};
 		int value = execute(adder);
+		
 		System.out.println(value);
 		
 		//value = execute(<< write a lambda expression here >>);
