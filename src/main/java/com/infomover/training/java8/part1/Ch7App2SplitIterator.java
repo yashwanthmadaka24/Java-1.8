@@ -13,12 +13,12 @@ public class Ch7App2SplitIterator {
 		
 		Spliterator<String> si1 =   names.spliterator();
 		
-		System.out.println("si1 estimateSize : " + si1.estimateSize() );
+		System.out.println("si1 is splitIterator and estimatedSize : " + si1.estimateSize() );
 		
 		
 		Spliterator<String> si2 = si1.trySplit();
 		
-		System.out.println("si2 estimateSize : " + si2.estimateSize() );
+		System.out.println("si2 estimatedSize : " + si2.estimateSize() );
 
 		
 		Spliterator<String> si3 = si1.trySplit();

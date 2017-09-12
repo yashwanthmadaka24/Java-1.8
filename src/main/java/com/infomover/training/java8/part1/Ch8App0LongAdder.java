@@ -29,6 +29,7 @@ public class Ch8App0LongAdder {
 	        int numberOfIncrements = 100;
 
 	        //when
+	        // IntStream.range : startInclusive to endExclusive
 	        Runnable incrementAction = () -> IntStream
 	          .range(0, numberOfIncrements)
 	          .forEach((i) -> counter.increment());
