@@ -50,7 +50,6 @@ public class Ch4App0MethodReferences {
 		
 		Supplier<HealthInsuranceService> f1 = null;
 		
-		Function<String, HealthInsuranceService> f2 = null;
 		
 		
 	}

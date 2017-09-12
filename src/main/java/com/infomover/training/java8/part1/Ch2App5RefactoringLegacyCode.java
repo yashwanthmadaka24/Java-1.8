@@ -3,6 +3,7 @@ package com.infomover.training.java8.part1;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import com.infomover.training.java8.model.Dependent;
 import com.infomover.training.java8.model.Employee;
@@ -34,6 +35,7 @@ public class Ch2App5RefactoringLegacyCode {
 			}
 		}
 		System.out.println(greaterThan15);
+		
 		
 		
 		/** Code Snippet 2 **/

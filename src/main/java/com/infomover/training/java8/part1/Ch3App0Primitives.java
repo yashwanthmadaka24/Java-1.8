@@ -2,6 +2,8 @@ package com.infomover.training.java8.part1;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Ch3App0Primitives {
 	
@@ -15,7 +17,13 @@ public class Ch3App0Primitives {
 		 * Get the statistics of age of all Dependents of all Employees
 		 * 
 		 */
-	
+		
+		Stream<String> s;
+		
+		
+		
+		
+	   
 //
 //		IntSummaryStatistics statistics = 
 //					HealthData.employeeList

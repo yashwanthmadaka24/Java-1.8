@@ -38,7 +38,7 @@ public class Ch3App5Optional {
 		String someString = null; // put Farhan and check
 		Optional alsoEmpty = Optional.ofNullable(someString);
 		
-		System.out.println(alsoEmpty);
+		System.out.println("alsoEmpty : " + alsoEmpty.toString());
 		System.out.println(alsoEmpty.orElse("Shakir"));
 		System.out.println(alsoEmpty.orElseGet(() -> "Value provided by supplier"));
 		

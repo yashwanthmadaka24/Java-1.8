@@ -26,7 +26,7 @@ public class Ch4App3Grouping {
 		Stream<Employee> emps2 = HealthData.employeeList.stream();
 
 		/** Get list of employees by their age groups 25 to 35 and 35 to 45 **/
-//		Map<Integer, List<Employee>> ageWiseEmps =  
+//		Map<String, List<Employee>> ageWiseEmps =  
 //						emps2
 //							// String can be constructor using ternary operator based on age
 //						    .collect ( << Use Collectors.groupingBy(Function<Employee, String>)   >>  )

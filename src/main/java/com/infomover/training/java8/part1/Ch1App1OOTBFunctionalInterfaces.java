@@ -16,8 +16,8 @@ public class Ch1App1OOTBFunctionalInterfaces {
 
 	public static void main(String[] args) {
 		
-		Function<Integer, Integer> adder  = x -> x + 5;
-		BiFunction<Integer, String, String> biFunction ;
+		Function<Integer, Integer> adder  = x -> x + 1;
+		BiFunction<Integer, String, String> biFunction  ;
 		Predicate<Integer> predicate ;
 		UnaryOperator<Integer> uo ;
 		BinaryOperator<Integer> bo  ;
