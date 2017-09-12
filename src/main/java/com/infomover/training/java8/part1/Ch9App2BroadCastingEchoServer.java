@@ -21,6 +21,8 @@ public class Ch9App2BroadCastingEchoServer extends Thread {
 
 	public void run() {
 		running = true;
+		
+		
 
 		while (running) {
 			try {

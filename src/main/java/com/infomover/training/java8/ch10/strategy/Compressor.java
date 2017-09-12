@@ -1,10 +1,11 @@
 package com.infomover.training.java8.ch10.strategy;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.ZipOutputStream;
 
 /**
  * The actual component

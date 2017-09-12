@@ -21,7 +21,7 @@ public class Ch10App0CommandPattern {
 
 		/**
 		 * Use a supplier style lambda. you can do away with the concrete
-		 * command classes all-together. Please note that you Command is a
+		 * command classes all-together. Please note that your Command is a
 		 * functional interface
 		 * 
 		 */
@@ -30,7 +30,7 @@ public class Ch10App0CommandPattern {
 //		m.record(() -> << call a function on SimpleEditor object  to close >>);
 
 		
-		/**  now use method reference of SimplEditor object created above **/
+		/**  now use method reference of SimpleEditor object created above **/
 //		m.record(<< use open method reference of editor >>);
 //		m.record(<< use save method reference of editor >>);
 //		m.record(<< use close method reference of editor >>);
