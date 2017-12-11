@@ -13,13 +13,19 @@ public class Ch2App0IntroducingStreams {
 
 		Stream<String> streamOfNames = names.stream();
 
+		/*
+		 * a) Unfold the expression into code snippet
+		   b) Write an SOP and run the program
+		   c) After filter, add a map to convert name to upper case - use a Function<? extends String, ? extends R>
+		   d) Write an SOP in filter too and run the code
+		   e) Change the order of operations and see results - First do mapping and then filter
+		*/
+		
 		List<String> morganCompanies = 
-					streamOfNames.filter(name -> {
-						
-										// << Write SOP here to print the value of name
-										return name.contains("Morgan");
-								  })
-								 .collect(Collectors.toList());
+				streamOfNames
+					.filter(name -> name.contains("Morgan"))
+					.map(name -> name.toUpperCase())
+				.collect(Collectors.toList());
 
 		System.out.println(morganCompanies);
 
