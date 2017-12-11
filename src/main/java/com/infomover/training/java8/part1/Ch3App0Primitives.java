@@ -28,7 +28,7 @@ public class Ch3App0Primitives {
 //		IntSummaryStatistics statistics = 
 //					HealthData.employeeList
 //						<< Get the stream using stream() >>
-//						<< Use a flatMap to convert Employee to Depedent  >>
+//						<< Use a flatMap to convert Employee to Dependent  >>
 //						<< Use mapToInt to get age of Dependent >>
 //						<< use summaryStatistics() to get the statistics >>
 //		
