@@ -21,6 +21,7 @@ public class Ch2App0IntroducingStreams {
 		   e) Change the order of operations and see results - First do mapping and then filter
 		*/
 		
+		
 		List<String> morganCompanies = 
 				streamOfNames
 					.filter(name -> name.contains("Morgan"))
