@@ -6,6 +6,7 @@ import com.infomover.training.java8.model.Employee;
 import com.infomover.training.java8.model.HealthData;
 
 public class Ch4App6RefactoringAndCustomCollectorsPart1 {
+			  
 
 	public static void main(String[] args) {
 
@@ -26,7 +27,10 @@ public class Ch4App6RefactoringAndCustomCollectorsPart1 {
 		String result = builder.toString();
 		System.out.println(result);
 		
-		// Refactoring the code to use Streams & Map
+
+		//  1.8 Way - Refactoring the code to use Streams & Map
+		
+		// We are essentially reducing the stream here
 		
 		StringBuilder builder2 = new StringBuilder("["); 
 		
