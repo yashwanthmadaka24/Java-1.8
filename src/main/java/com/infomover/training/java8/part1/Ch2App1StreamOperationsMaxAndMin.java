@@ -1,6 +1,5 @@
 package com.infomover.training.java8.part1;
 
-import java.util.Comparator;
 import java.util.stream.Stream;
 
 import com.infomover.training.java8.model.Employee;

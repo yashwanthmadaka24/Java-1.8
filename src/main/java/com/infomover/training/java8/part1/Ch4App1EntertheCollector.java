@@ -1,7 +1,10 @@
 package com.infomover.training.java8.part1;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.infomover.training.java8.model.Employee;
@@ -40,11 +43,14 @@ public class Ch4App1EntertheCollector {
 		
 		Stream<Employee> employees = HealthData.employees;
 		
-//		Optional<Employee> emp = 
-//				employees
-//					.collect(<< Use Collectors.maxBy and pass Comparator comparing 
-//							based on size of dependentList of employee >> );
+//		<< Use Collectors.maxBy and pass Comparator comparing 
+//		based on size of dependentList of employee >>
+//		
 		
+		Optional<Employee> emp = 
+				employees
+					.collect( Collectors.maxBy(Comparator.comparing( x -> x.getDependentList().size())) );
+		System.out.println(emp.get());
 		
 		
 		// Neater way to write

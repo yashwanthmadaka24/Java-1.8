@@ -1,9 +1,11 @@
 package com.infomover.training.java8.part1;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 import com.infomover.training.java8.model.Dependent;
 import com.infomover.training.java8.model.Employee;
@@ -59,7 +61,8 @@ public class Ch2App5RefactoringLegacyCode {
 			    });
 		  });
 		System.out.println(greaterThan15);
-
+		
+	
 		
 		/** Code Snippet 3 **/
 		// Following code to make use of filter and map functions of stream
@@ -73,7 +76,7 @@ public class Ch2App5RefactoringLegacyCode {
 //				  x.getDependents()
 //				  	<<  use a filter to filter out dependents whoes age is >= 15  >>
 //				  	<< use  map to convert dependent to name (String) >>
-//				  	// never add values from stream to shared data structure. Local is still OK.
+//				  	// never add values from stream to shared data structure. Local variable is also not OK
 //				  	.forEach(name -> greaterThan15.add(name));
 		});
 		

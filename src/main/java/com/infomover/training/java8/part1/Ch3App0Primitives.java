@@ -5,25 +5,22 @@ import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import com.infomover.training.java8.model.HealthData;
+
 public class Ch3App0Primitives {
-	
+
 	public static void main(String[] args) {
-		
+
 		/**
-		 * Primitive Streams : LongStream, IntStream & DoubleStream map
-		 * functions like mapToLong actually does not return Stream<Long> but returns a 
-		 * LongStream.
+		 * Primitive Streams : LongStream, IntStream & DoubleStream map functions like
+		 * mapToLong actually does not return Stream<Long> but returns a LongStream.
 		 * 
 		 * Get the statistics of age of all Dependents of all Employees
 		 * 
 		 */
-		
+
 		Stream<String> s;
-		
-		
-		
-		
-	   
+
 //
 //		IntSummaryStatistics statistics = 
 //					HealthData.employeeList

@@ -1,9 +1,13 @@
 package com.infomover.training.java8.part1;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.infomover.training.java8.model.Employee;
 import com.infomover.training.java8.model.HealthData;
+import com.infomover.training.java8.model.HealthPlan;
 
 public class Ch4App3Grouping {
 
@@ -22,6 +26,11 @@ public class Ch4App3Grouping {
 //				  .collect(<<  use Collectors.groupingBy (Function<? extends Employee, ? extends HealthPlan>)  >>))
 //
 //		groupedEmps.forEach((key, value) -> System.out.println(key + " -- " + value));
+		
+		
+		Map<HealthPlan, List<Employee>> groupedEmps =
+				  emps.collect(Collectors.groupingBy(x -> x.getPrimaryHealthPlan()));
+		    
 		
 		Stream<Employee> emps2 = HealthData.employeeList.stream();
 

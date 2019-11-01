@@ -1,5 +1,8 @@
 package com.infomover.training.java8.part1;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.infomover.training.java8.model.Employee;
@@ -27,8 +30,12 @@ public class Ch4App2Paritioning {
 //				emps
 //				.collect(<< use Collectors.partitionBy(Function<Employee, Boolean>))
 //				
+		Map<Boolean, List<Employee>> empsWithDepdents = 
+				 emps
+				  .collect(Collectors.partitioningBy( 
+						  x -> x.getDependentList().size() > 0));
 		
-//		empsWithDependents.forEach((key, value) -> System.out.println(key + " -- " + value));
+		empsWithDepdents.forEach((key, value) -> System.out.println(key + " -- " + value));
 		
 		
 		
