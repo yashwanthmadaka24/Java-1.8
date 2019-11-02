@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 import com.mslc.training.java8.model.Employee;
 import com.mslc.training.java8.model.HealthData;
-import com.mslc.training.java8.model.HealthPlan;
+import com.mslc.training.java8.model.HealthPlanGenericImpl;
 
 public class Ch4App5ComposingCollectors2 {
 
@@ -49,11 +49,11 @@ public class Ch4App5ComposingCollectors2 {
 	
 		Stream<Employee> emps4 = HealthData.employeeList.stream();
 		
-		Map<HealthPlan, List<Employee>> planWiseEmps = emps4
+		Map<HealthPlanGenericImpl, List<Employee>> planWiseEmps = emps4
 				.collect(groupingBy(Employee::getPrimaryHealthPlan));
 		
-		Map<HealthPlan, Set<String>> planWiseEmpNames = new HashMap<>();
-		for (Map.Entry<HealthPlan, List<Employee>> entry : planWiseEmps.entrySet()) {
+		Map<HealthPlanGenericImpl, Set<String>> planWiseEmpNames = new HashMap<>();
+		for (Map.Entry<HealthPlanGenericImpl, List<Employee>> entry : planWiseEmps.entrySet()) {
 			
 			planWiseEmpNames.put(entry.getKey(), entry.getValue()
 													.stream()

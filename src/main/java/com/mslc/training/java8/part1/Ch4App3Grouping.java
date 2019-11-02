@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 import com.mslc.training.java8.model.Employee;
 import com.mslc.training.java8.model.HealthData;
-import com.mslc.training.java8.model.HealthPlan;
+import com.mslc.training.java8.model.HealthPlanGenericImpl;
 
 public class Ch4App3Grouping {
 
@@ -28,7 +28,7 @@ public class Ch4App3Grouping {
 //		groupedEmps.forEach((key, value) -> System.out.println(key + " -- " + value));
 		
 		
-		Map<HealthPlan, List<Employee>> groupedEmps =
+		Map<HealthPlanGenericImpl, List<Employee>> groupedEmps =
 				  emps.collect(Collectors.groupingBy(x -> x.getPrimaryHealthPlan()));
 		    
 		

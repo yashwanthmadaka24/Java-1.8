@@ -3,7 +3,7 @@ package com.mslc.training.java8.part1;
 import java.util.List;
 
 import com.mslc.training.java8.model.HealthData;
-import com.mslc.training.java8.model.HealthPlan;
+import com.mslc.training.java8.model.HealthPlanGenericImpl;
 
 public class Ch2App4PuttingOperationsToGether {
 	
@@ -23,7 +23,7 @@ public class Ch2App4PuttingOperationsToGether {
 
 		
 		
-		List<HealthPlan> healthPlans = HealthData.getThreeHealthPlans();
+		List<HealthPlanGenericImpl> healthPlans = HealthData.getThreeHealthPlans();
 		// Get all states that offer Comprehensive Health Plan
 		
 		/** Uncomment the following code and implement as explained  **/

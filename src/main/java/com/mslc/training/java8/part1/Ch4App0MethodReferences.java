@@ -8,40 +8,43 @@ public class Ch4App0MethodReferences {
 
 	public static void main(String[] args) {
 
-		BiConsumer<HealthInsuranceService, String> staticReference0 = (x, y) -> System.out.println(x + " ** " + y);
-
 		/**
 		 * << assign the static method reference "addNewInsurance of
-		 * HeatlthInsuranceService class >>
+		 * HealthInsuranceService class >>
 		 **/
 
-		BiConsumer<HealthInsuranceService, String> staticReference = null; // << assign the method reference here>>
+		BiConsumer<HealthInsuranceService, String> staticReference = null;
 
-		staticReference.accept(new HealthInsuranceService("static method reference"), "addNewInsurance");
+//		staticReference.accept(new HealthInsuranceService("static method reference"), "addNewInsurance");
 
 		/**
-		 * Create a new object of class HealthInsuranceService and assign the reference
-		 * of "activateInsurance" method
+		 * Declare a functional interface for activateInsurance method to be invoked on
+		 * an instance of "activateInsurance" method
 		 */
 		HealthInsuranceService service = new HealthInsuranceService("method reference");
-		BiConsumer<HealthInsuranceService, String> methodReference = null;
-		methodReference.accept(service, "activateInsurance");
+//		<< Define the function interface of the right type here >> methodReference = service::activateInsurance;
+//		methodReference.apply(service, "activateInsurance");
 
 		/**
-		 * Assign the reference of method "deactivateInsurance" of an arbitrary object
+		 * Define the signature of the deactivateInsurance of an arbitrary object.
+		 * Arbitrary object is the one that will be passed at the time of executing the
+		 * functional interface with accept or what ever .. depdending of the functional
+		 * interface
+		 * 
 		 */
-		BiConsumer<HealthInsuranceService, String> arbitraryObjectReference = null;
-		arbitraryObjectReference.accept(new HealthInsuranceService("arbitrary object method reference"),
-				"deactivateInsurance");
-
-		// similar in functionality but without method reference
-		BiConsumer<HealthInsuranceService, String> arbitraryObjectReference2 = (x, y) -> x.deactivateInsurance(y);
-		arbitraryObjectReference2.accept(new HealthInsuranceService("no method reference"), "deactivateInsurance");
+//		<< Define the functional interface here >> = HealthInsuranceService::deactivateInsurance;
+//		arbitraryObjectReference.accept(new HealthInsuranceService("Arbitrary Object"), "deactivateInsurance");
 
 		// Make a reference to the constructor to return back the new object of
 		// HealthInsuranceService in the following
 
 		Supplier<HealthInsuranceService> f1 = null;
+
+		// Uncomment the following and do the needful
+//		<< define functional interface reference here to hold reference to overloaded constructor> con2 = HealthInsuranceService::new;
+//		HealthInsuranceService s = con2.apply("new");
+
+		// Define more constructors and get the references
 
 	}
 
@@ -56,6 +59,7 @@ class HealthInsuranceService {
 	}
 
 	HealthInsuranceService(String id) {
+		System.out.println("Construct 2 executed : " + id);
 		this.id = id;
 	}
 
@@ -79,10 +83,15 @@ class HealthInsuranceService {
 		return service;
 	}
 
-	public HealthInsuranceService deactivateInsurance(String insuranceName) {
+	public String deactivateInsurance(String insuranceName) {
 
-		System.out.println("in subtract : " + insuranceName + " -- " + this);
-		return this;
+		System.out.println("in deactivateInsurance : " + insuranceName + " -- " + this);
+		return "this";
 	}
 
+}
+
+interface MyComparator<T> {
+
+	int cmp(T o1, T o2);
 }
