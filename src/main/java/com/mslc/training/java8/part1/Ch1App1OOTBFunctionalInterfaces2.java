@@ -2,6 +2,7 @@ package com.mslc.training.java8.part1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import com.mslc.training.java8.model.Employee;
 import com.mslc.training.java8.model.HealthData;
@@ -12,6 +13,8 @@ public class Ch1App1OOTBFunctionalInterfaces2 {
 		List<Employee> empList = HealthData.employeeList;
 		List<String> newList = mutateEmployeeToStringLegacy(empList);
 		System.out.println(newList);
+		
+		System.out.println(Function.identity().apply(empList.get(0)));
 
 //		List<String> newList2 = mutateEmployeeToStringJava8(empList, << functional interface >> );
 //		System.out.println(newList2);
