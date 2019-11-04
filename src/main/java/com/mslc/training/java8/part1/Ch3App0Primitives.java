@@ -22,12 +22,7 @@ public class Ch3App0Primitives {
 		Stream<String> s;
 
 //
-//		IntSummaryStatistics statistics = 
-//					HealthData.employeeList
-//						<< Get the stream using stream() >>
-//						<< Use a flatMap to convert Employee to Dependent  >>
-//						<< Use mapToInt to get age of Dependent >>
-//						<< use summaryStatistics() to get the statistics >>
+//		
 //		
 //		System.out.println("Average age : " + statistics.getAverage() + " -- Max Age" + statistics.getMax()
 //				+ " --  Min Age: " + statistics.getMin());

@@ -2,51 +2,43 @@ package com.mslc.training.java8.part1;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.mslc.training.java8.model.Employee;
 import com.mslc.training.java8.model.HealthData;
-import com.mslc.training.java8.model.HealthPlanGenericImpl;
+import com.mslc.training.java8.model.HealthPlan;
 
 public class Ch4App3Grouping {
 
 	public static void main(String[] args) {
-		
-		
+
 		/**
-		 * Get employees grouped by their Primary HealthPlan
+		 * Get employees grouped by their Primary HealthPlan. Note there is function
+		 * called getPrimaryHealthPlan on Employee
 		 * 
 		 */
-		
+
 		Stream<Employee> emps = HealthData.employees;
-		
-//		Map<HealthPlan, List<Employee>> groupedEmps = 
-//				emps
-//				  .collect(<<  use Collectors.groupingBy (Function<? extends Employee, ? extends HealthPlan>)  >>))
-//
-//		groupedEmps.forEach((key, value) -> System.out.println(key + " -- " + value));
-		
-		
-		Map<HealthPlanGenericImpl, List<Employee>> groupedEmps =
-				  emps.collect(Collectors.groupingBy(x -> x.getPrimaryHealthPlan()));
-		    
-		
+
+		Map<HealthPlan, List<Employee>> groupedEmps = null;
+
+		groupedEmps.forEach((key, value) -> System.out.println(key + " -- " + value));
+
 		Stream<Employee> emps2 = HealthData.employeeList.stream();
 
-		/** Get list of employees by their age groups 25 to 35 and 35 to 45 **/
-//		Map<String, List<Employee>> ageWiseEmps =  
-//						emps2
-//							// String can be constructor using ternary operator based on age
-//						    .collect ( << Use Collectors.groupingBy(Function<Employee, String>)   >>  )
-		
-		
-		
-		
-		
-		
-		
+		// @formatter:off
 
+		/**
+		 * Get list of employees by their age groups 25 to 35 and 35 to 45.
+		 * Hint : 
+		 * 	Map<String, List<Integer>> allInts2 = 
+				Stream.of(35, 45, 35, 35, 35, 45, 48)
+					.collect(groupingBy(x -> (x >=30 && x <= 40 ? "30-40" : "40-50")));
 		
+		 * 
+		 */
+		 
+		// @formatter:on
+
 	}
 }

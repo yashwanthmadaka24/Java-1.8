@@ -1,126 +1,65 @@
 package com.mslc.training.java8.part1;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
 
-import com.mslc.training.java8.model.Dependent;
 import com.mslc.training.java8.model.Employee;
 import com.mslc.training.java8.model.HealthData;
+import com.mslc.training.java8.model.HealthPlanGenericImpl;
 
 public class Ch2App5RefactoringLegacyCode {
 
-	
 	public static void main(String[] args) {
 
-		// Find all the dependents in the system where the age is greater than
-		// 15 and put their names (just the name) into a Set. In other words
-		// we want names of all the dependents who are of age greater than 15
-		// Note that dependents are associated with employees
+		/**
+		 * Exercise 1: Find list of all employees that has at-least one healthplan as
+		 * comprehensive. Note that if the name of plan has "compre" then it is
+		 * comprehensive
+		 * 
+		 * 1st write legacy code and the java8 code
+		 * 
+		 * Hint for java8 code :
+		 * 
+		 */
 
+		/**
+		 * Exercise 2: Find all the dependents in the system where the age is greater
+		 * than 15 and put their names (just the name) into a Set. In other words we
+		 * want names of all the dependents who are of age greater than 15. Note that
+		 * dependents are associated with employees
+		 * 
+		 * 1st write legacy code then break the same step by step into java8 code
+		 **/
 
-		List<Employee> allEmployeesList = HealthData.employeeList; 
-				
-		/** Code Snippet 1 **/
-		
-		Set<String> greaterThan15 = new HashSet<>();
-		// stream through 
-		for (Employee  emp : allEmployeesList) {
-			
-			List<Dependent> dependents = emp.getDependentList();
-			for (Dependent d : dependents) {
-				
-				// check the age of dependent and add name of the dependent to the greaterThan15 set
+		/**
+		 * Exercise 3: Hands-On : Get me the state of comprehensive health plans of all
+		 * employees
+		 * 
+		 * 
+		 */
+
+		/**
+		 * Exercise 4: 
+		 * Hands-On : Get me all employees with at-least one plan that is
+		 * Comprehensive. 
+		 * 
+		 * The legacy code is given below
+		 */
+
+		List<Employee> emps = HealthData.employeeList;
+		List<Employee> empsWithComprePlans = new ArrayList();
+		for (Employee emp : emps) {
+
+			List<HealthPlanGenericImpl> empPlans = emp.getHealthPlanList();
+			for (HealthPlanGenericImpl p : empPlans) {
+				if (p.getName().startsWith("Compre")) {
+					empsWithComprePlans.add(emp);
+					break;
+				}
 			}
 		}
-		System.out.println(greaterThan15);
 		
 		
-		
-		/** Code Snippet 2 **/
-		// Streamy but still quite verbose
-		greaterThan15.clear();
-		allEmployeesList.stream()
-		  .forEach(x -> {
-			  
-			 x.getDependentList().stream()
-			    .forEach(dependent -> {
-			    	  
 
-			    	
-			    		// check the age of dependent and add name of the dependent to the greaterThan15 set
-			    	
-			    	
-			    		// dont you think this will be good candidate for filter ?
-			    	
-			    		
-			    	
-			    });
-		  });
-		System.out.println(greaterThan15);
-		
-	
-		
-		/** Code Snippet 3 **/
-		// Following code to make use of filter and map functions of stream
-		greaterThan15.clear();
-		allEmployeesList.stream()
-		
-			// dont you think this is a flatMap candidate (flattening of all dependents)
-		
-			.forEach(x -> {
-				
-//				  x.getDependents()
-//				  	<<  use a filter to filter out dependents whoes age is >= 15  >>
-//				  	<< use  map to convert dependent to name (String) >>
-//				  	// never add values from stream to shared data structure. Local variable is also not OK
-//				  	.forEach(name -> greaterThan15.add(name));
-		});
-		
-		
-		System.out.println(greaterThan15);
-		
-		/** Code Snippet 4 **/
-		/** Implement one set of operations on the stream to get the desired results **/
-		
-//		Set<String> dependentNames = allEmployeesList.stream()
-//			<< Use a flatMap to only convert employee to dependents. Note that this will return a stream of dependents >>
-//			<< Use a filter to filter dependents that are >= 15 yrs of age >>
-//			<< Use a map to convert dependents to name (String)  >>
-//		    << Use collect and then a Collector to get a Set  >>
-
-//		System.out.println("Finally : " + dependentNames);
-		
-		// Hands-On : Get me all employees with at-least one plan that is Comprehensive Health Plan
-		
-				/**
-				 * List<Employee> empsWithComprePlans = new ArrayList();
-				 * for (Employee emp : emps) {
-				 * 
-				 *    List<HealthPlan> empPlans = emp.getPlans();
-				 *    for (Plan p : empPlans) {
-				 *        if (p.getName().startsWith("Compre")) {
-				 *            empsWithComprePlans.add(emp);
-				 *            break;
-				 *        }
-				 *    }
-				 * }
-				 * 
-				 */
-		// Solution in the corejava8 project
-		
-		
-		
-		
-		
-		
-		
-		
-	
-		
-		
 	}
 }
