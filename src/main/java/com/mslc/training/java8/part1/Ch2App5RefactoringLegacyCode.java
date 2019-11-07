@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.mslc.training.java8.model.Employee;
 import com.mslc.training.java8.model.HealthData;
+import com.mslc.training.java8.model.HealthPlan;
 import com.mslc.training.java8.model.HealthPlanGenericImpl;
 
 public class Ch2App5RefactoringLegacyCode {
@@ -21,6 +22,25 @@ public class Ch2App5RefactoringLegacyCode {
 		 * Hint for java8 code :
 		 * 
 		 */
+		
+		 List<Employee> empList = HealthData.employeeList;
+		 List<Employee> empListWithAtLeast1ComprePlan = new ArrayList<>();
+		 for (Employee emp : empList) {
+			 
+			 List<HealthPlanGenericImpl> plans = emp.getHealthPlanList();
+			 for (HealthPlanGenericImpl p : plans) {
+				 if (p.getName().contains("Compre")) {
+					 empListWithAtLeast1ComprePlan.add(emp);
+				 }
+			 }
+		 }
+		 System.out.println(empListWithAtLeast1ComprePlan);
+			
+		
+		
+		
+		
+		
 
 		/**
 		 * Exercise 2: Find all the dependents in the system where the age is greater
