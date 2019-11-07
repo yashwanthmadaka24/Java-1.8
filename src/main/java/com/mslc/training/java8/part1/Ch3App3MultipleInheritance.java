@@ -10,9 +10,9 @@ public class Ch3App3MultipleInheritance {
 	 * </p>
 	 * 
 	 * <ol>
-	 * <li>Any class wins over any interface. So if there’s a method with a
-	 * body, or an abstract declaration, in the superclass chain, we can ignore
-	 * the interfaces completely.</li>
+	 * <li>Any class wins over any interface. So if there’s a method with a body, or
+	 * an abstract declaration, in the superclass chain, we can ignore the
+	 * interfaces completely.</li>
 	 * <li>Subtype wins over supertype. If we have a situation in which two
 	 * interfaces are competing to provide a default method and one interface
 	 * extends the other, the subclass wins.</li>
@@ -24,37 +24,28 @@ public class Ch3App3MultipleInheritance {
 	 * 
 	 * 
 	 **/
-	public static void main(String[] args) {
 
-		TheHealthInsurance i = new TheHealthInsurance();
-		i.getMaxInsuranceAmount();
-		
-	}
-}
+	// @formatter:off
 
+	/**
+	 * Exercise 1:
+         - AxaInsurance : default method : calculatePremium()
+                - AxaHealthInsurance extends AxaInsurance : default Method : calculatePremium()
+                - AxaLifeInsurance extends AxaInsurance : default Method : calculatePremium()
+        - Instantiate and invoke calculatePremium (from main)  on following classes
+                - AxaInsuranceImpl implements AxaInsurance
+                - AxaHealthInsuranceImpl implements AxaHealthInsurance
+                - AxaLifeInsurnaceImpl implements AxaLifeInsurance
+        - Now override the default methods in the following classes and run the same code
+                - AxaHealthInstanceImpl
+                - AxaLifeInsuranceImpl
+        - Finally create a class called GeneralInsuranceImpl that implements both : AxaHealthInsurance & AxaLifeInsurance
+                - Check what happens. 
+                - Use <<InterfaceName>>.super.method()
+	 * 
+	 * 
+	 */
+	 
+	// @formatter:on
 
-interface AccidentInsurance {
-
-	default public int getMaxInsuranceAmount() {
-		// in real-life, based on some business logic
-		System.out.println("accident insurance");
-		return 100000;
-	}
-}
-interface DentalInsurance {
-
-	default public int getMaxInsuranceAmount() {
-		// in real-life, based on some business logic
-		System.out.println("dental insurance");
-		return 5000;
-	}
-}
-class TheHealthInsurance implements AccidentInsurance, DentalInsurance {
-
-	@Override
-	public int getMaxInsuranceAmount() {
-		
-		// It can very well be DentalInsurance.super.getMaxInsuranceAmount()
-		return AccidentInsurance.super.getMaxInsuranceAmount();
-	}
 }
