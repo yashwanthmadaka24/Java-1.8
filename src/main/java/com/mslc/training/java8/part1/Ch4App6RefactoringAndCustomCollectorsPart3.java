@@ -14,6 +14,7 @@ public class Ch4App6RefactoringAndCustomCollectorsPart3 {
 
 		StringCombiner combined = emps
 									.stream()
+//									.parallel()
 									.map(Employee::getName)
 									.reduce(new StringCombiner(", ", "[", "]"),
 												StringCombiner::add, 

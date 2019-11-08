@@ -2,6 +2,8 @@ package com.mslc.training.java8.part1;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.mslc.training.java8.model.Employee;
@@ -18,9 +20,17 @@ public class Ch4App3Grouping {
 		 * 
 		 */
 
-		Stream<Employee> emps = HealthData.employees;
+		List<Employee> emps = HealthData.employeeList;
+		// @formatter:off
+		
+		Map<HealthPlan, List<Employee>> groupedEmps =  	
+			   emps
+			  .stream() 
+			  .collect(Collectors.groupingBy(x -> x.getPrimaryHealthPlan()));
+ 
+		// @formatter:on
 
-		Map<HealthPlan, List<Employee>> groupedEmps = null;
+//		Map<HealthPlan, List<Employee>> groupedEmps = null;
 
 		groupedEmps.forEach((key, value) -> System.out.println(key + " -- " + value));
 
@@ -37,7 +47,17 @@ public class Ch4App3Grouping {
 		
 		 * 
 		 */
+		
+		Function<Integer, String> f = x -> (x >=30 && x <= 40 ? "30-40" : "40-50");
 		 
+		
+		Map<String, List<Integer>> allInts2 = 
+				Stream.of(35, 45, 35, 35, 35, 45, 48)
+					.collect(Collectors
+							.groupingBy(f));
+		
+		System.out.println(allInts2);
+		
 		// @formatter:on
 
 	}

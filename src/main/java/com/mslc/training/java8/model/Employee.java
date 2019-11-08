@@ -113,6 +113,12 @@ public final class Employee {
 		return this.name + " -- " + this.age;
 
 	}
+	
+	
+	public void printEmployee(String name) {
+		System.out.print(" >> " + this.hashCode() + "\n");
+		System.out.println(this.name + " -- " + this.dependents.size());
+	}
 
 	public Employee copy() {
 
@@ -122,5 +128,7 @@ public final class Employee {
 
 		return new Employee(name, healthPlans, dependents, age);
 	}
+	
+	
 
 }

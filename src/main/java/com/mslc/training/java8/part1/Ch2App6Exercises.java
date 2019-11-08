@@ -1,6 +1,5 @@
 package com.mslc.training.java8.part1;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -27,7 +26,8 @@ public class Ch2App6Exercises {
 		System.out.println(addUp(Stream.of(1, 2, 3, 4, 5)));
 
 		/*
-		 * Exercise 2: Write a function that takes in HealthPlans and returns the list
+		 * Exercise 2:
+			Write a function that takes in HealthPlans and returns the list
 		 * of Strings with their names concatenated with applicable state. Use
 		 * HealthData.getThreeHealthPlans()
 		 */

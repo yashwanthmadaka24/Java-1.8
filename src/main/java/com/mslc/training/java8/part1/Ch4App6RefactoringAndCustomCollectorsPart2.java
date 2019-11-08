@@ -17,10 +17,9 @@ public class Ch4App6RefactoringAndCustomCollectorsPart2 {
 
 		// single argument reduce. The return will be Optional<< what ever the stream
 		// type is >>
-		Optional<String> reducedString1 = allStrings.reduce((acc, element) -> {
-
-			return acc + " ~ " + element;
-		});
+		Optional<String> reducedString1 = 
+				allStrings.reduce((acc, element) -> acc + " ~ " + element); 
+				
 
 		System.out.println("reducedString 1 : " + reducedString1);
 
@@ -33,6 +32,7 @@ public class Ch4App6RefactoringAndCustomCollectorsPart2 {
 		// Note that identity is some concrete value and hence something will for sure
 		// return
 		allStrings = Stream.of("1", "2", "3", "4", "5");
+		
 		String reducedString2 = allStrings.reduce("1st Element", (acc, element) -> {
 
 			return acc + " ~ " + element;
@@ -46,20 +46,28 @@ public class Ch4App6RefactoringAndCustomCollectorsPart2 {
 
 		// 3 arguments reduce - only when you want to change (map kind of feature)
 		allStrings = Stream.of("1", "2", "3", "4", "5");
-		StringBuilder reducedString3 = allStrings.reduce(new StringBuilder(), (acc, element) -> {
+		
+	
+		StringBuilder reducedString3 = 
+				
+				allStrings
+//				  .parallel()
+				  .reduce(new StringBuilder(), (acc, element) -> {
 
-			if (acc.length() > 0) {
-				acc.append(",");
-			}
+									if (acc.length() > 0) {
+										acc.append(",");
+									}
+						
+									acc.append(element);
+						
+									return acc;
 
-			acc.append(element);
-
-			return acc;
-
-		}, (left, right) -> {
-
-			return new StringBuilder();
-		});
+						}, (left, right) -> {
+				
+							System.out.println("executing the combiner...");
+							return left.append(right);
+							//return new StringBuilder();
+						});
 
 		reducedString3.insert(0, "[").append("]");
 		System.out.println("reducedString3 : " + reducedString3);
@@ -77,6 +85,7 @@ public class Ch4App6RefactoringAndCustomCollectorsPart2 {
 
 			if (sb.length() > 0) {
 				sb.append(" , ");
+				
 			}
 			return sb.append(element);
 

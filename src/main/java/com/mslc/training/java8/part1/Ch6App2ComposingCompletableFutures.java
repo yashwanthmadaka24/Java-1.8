@@ -34,6 +34,8 @@ public class Ch6App2ComposingCompletableFutures {
 			return "cf1";
 
 		});
+		
+
 
 		CompletableFuture<String> cf3 = cf1.thenCompose(x ->  CompletableFuture.supplyAsync(() -> {
 			

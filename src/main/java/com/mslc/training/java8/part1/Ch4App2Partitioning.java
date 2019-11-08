@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.mslc.training.java8.model.Employee;
 import com.mslc.training.java8.model.HealthData;
@@ -20,6 +22,7 @@ public class Ch4App2Partitioning {
 		List<Employee> emps = HealthData.employeeList;
 
 		Map<Boolean, List<Employee>> partitionedEmps = new HashMap<>();
+
 		List<Employee> hasDependents = new ArrayList<Employee>();
 		List<Employee> noDependents = new ArrayList<>();
 		for (Employee emp : emps) {
@@ -40,6 +43,23 @@ public class Ch4App2Partitioning {
 		 * dependents and those who do not using Collectors.partitionBy
 		 * 
 		 */
+		// @formatter:off
+
+		
+		Map<Boolean, List<Employee>> partitionedEmps1 = HealthData
+				 .employeeList
+				 .stream()
+				 .collect(Collectors
+						   .partitioningBy(x -> 
+						   x.getDependentList().size()  > 0));
+		
+		
+		Stream<Employee> empStream = HealthData.employees;
+		
+		
+				 
+		// @formatter:on
+		System.out.println(partitionedEmps1);
 
 	}
 }

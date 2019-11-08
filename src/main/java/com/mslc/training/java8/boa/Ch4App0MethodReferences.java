@@ -1,32 +1,34 @@
-package com.mslc.training.java8.part1;
+package com.mslc.training.java8.boa;
 
-import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
-
-import com.mslc.training.java8.model.Employee;
-import com.mslc.training.java8.model.HealthData;
+import java.util.stream.LongStream;
 
 public class Ch4App0MethodReferences {
 
 	public static void main(String[] args) {
+		
+		
+		
+		
 
 		/**
 		 * << assign the static method reference "addNewInsurance of
 		 * HealthInsuranceService class >>
 		 **/
 
-		BiConsumer<HealthInsuranceService, String> staticReference = null;
+		BiConsumer<HealthInsuranceService, String> staticReference = HealthInsuranceService::addNewInsurance;
 
-//		staticReference.accept(new HealthInsuranceService("static method reference"), "addNewInsurance");
+		staticReference.accept(new HealthInsuranceService("static method reference"), "addNewInsurance");
 
 		/**
 		 * Declare a functional interface for activateInsurance method to be invoked on
-		 * an instance
+		 * an instance HealthInsuranceService
 		 */
 		HealthInsuranceService service = new HealthInsuranceService("method reference");
-		BiFunction<HealthInsuranceService, String, HealthInsuranceService> methodReference = service::activateInsurance;
+//		<< Define the function interface of the right type here >> methodReference = service::activateInsurance;
 //		methodReference.apply(service, "activateInsurance");
 
 		/**
@@ -42,36 +44,65 @@ public class Ch4App0MethodReferences {
 		// Make a reference to the constructor to return back the new object of
 		// HealthInsuranceService in the following
 
-		Supplier<HealthInsuranceService> f1 = HealthInsuranceService::new;
-
-		HealthInsuranceService s = f1.get();
+		Supplier<HealthInsuranceService> f1 = null;
 
 		// Uncomment the following and do the needful
 //		<< define functional interface reference here to hold reference to overloaded constructor> con2 = HealthInsuranceService::new;
 //		HealthInsuranceService s = con2.apply("new");
 
-
 		// Define more constructors and get the references
 
-		new EmployeeProcessor().process(Employee::printEmployee);
+//		new MethodReferenceDemo().someHigherOrderFunction((x, y) -> {System.out.println(x + " " + y);});
+		new MethodReferenceDemo().someHigherOrderFunction(MethodReferenceDemo::demo1);
+		
+		new MethodReferenceDemo().someHigherOrderFunction2(x -> x > 3);
+		new MethodReferenceDemo().someHigherOrderFunction2(MethodReferenceDemo::demo2);
+
 	}
 
 }
 
-
-class EmployeeProcessor {
+class MethodReferenceDemo {
 	
-	public void process(BiConsumer<Employee, String> f ) {
+	public void someHigherOrderFunction2(Predicate<Integer> p) {
+		System.out.println("In someHigherOrderFunction : ");
 		
-		List<Employee> employees = HealthData.employeeList;
-		System.out.println(" --- -");
-		for (Employee emp : employees) {
-			System.out.print(emp.hashCode() + " - " );
-			f.accept(emp, emp.getLastName());
-		}
-		System.out.println(" --- -");
+		System.out.println(p.test(5));
+
 	}
 	
+	public static boolean demo2(Integer value) {
+		System.out.println("in demo 2 :" + value);
+		if (value > 5) {
+			return true;
+		} else {
+			return false;
+		}
+		
+		//return value2 + " -- New value";
+
+	}
+
+	
+	
+
+	public void someHigherOrderFunction(BiFunction<String, String, Integer> f) {
+		System.out.println("In someHigherOrderFunction : ");
+		
+		Integer i = f.apply("v1", "v2");
+		
+		
+
+	}
+
+	public static Integer demo1(String value1, String value2) {
+		System.out.println("in demo 1 : " + value1 + " -- " + value2);
+		//return value2 + " -- New value";
+		
+		return null;
+
+	}
+
 }
 
 class HealthInsuranceService {

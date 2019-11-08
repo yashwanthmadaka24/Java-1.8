@@ -1,6 +1,9 @@
 package com.mslc.training.java8.part1;
 
+import java.util.function.BiFunction;
+
 import com.mslc.training.java8.model.HealthPlan;
+import com.mslc.training.java8.model.HealthPlanComprehensiveImpl;
 import com.mslc.training.java8.model.factory.HealthPlanFactoryLegacy;
 
 public class Ch4App0FactoryPattern {
@@ -13,6 +16,11 @@ public class Ch4App0FactoryPattern {
 
 		p1.applyBenefits();
 		p2.applyBenefits();
+		
+//		BiFunction<String, String, HealthPlan> b = HealthPlanComprehensiveImpl::new;
+//		HealthPlan p = b.apply("asd", "dsd");
+//		System.out.println(p.getClass().getCanonicalName());
+		
 
 		// Exercise : Create a new HealthPlanFactoryJava8 class thats acts as a factory
 		// HealthPlanFactoryJava8 factory2 = new HealthPlanFactoryJava8();

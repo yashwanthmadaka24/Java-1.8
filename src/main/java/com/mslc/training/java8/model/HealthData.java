@@ -46,6 +46,7 @@ public class HealthData {
 
 	public static Stream<Employee> employees = Stream.of(HealthData.johnColtrane, HealthData.johnLennon,
 			HealthData.sarahCorner2, HealthData.sarahCorner);
+	
 	public static List<Employee> employeeList = Arrays.asList(HealthData.johnColtrane, HealthData.johnLennon,
 			HealthData.sarahCorner2, HealthData.sarahCorner, HealthData.sarahCorner3, HealthData.sarahCorner4);
 

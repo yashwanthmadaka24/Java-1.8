@@ -19,14 +19,15 @@ public class Ch1App1OOTBFunctionalInterfaces {
 		Function<Integer, Integer> adder  = x -> x + 1;
 		
 		BiFunction<Integer, String, String> biFunction ;
-		Predicate<Integer> predicate ;
-		UnaryOperator<Integer> uo ;
-		BinaryOperator<Integer> bo  ;
+		Predicate<Integer> predicate = x -> x > 10;
+
+		UnaryOperator<Integer> uo  = x -> 10;
+		BinaryOperator<Integer> bo  = (x, y) -> x.intValue() + y.intValue() ;
 		
-		IntUnaryOperator iuo  ;
-		DoubleUnaryOperator duo ;
+		IntUnaryOperator iuo  = x -> x + 10;
+		DoubleUnaryOperator duo = x -> x + 10D;
 		
-		IntBinaryOperator ibo ;
+		IntBinaryOperator ibo = (x, y) -> x + y;
 		DoubleBinaryOperator dbo ;
 		
 		ToIntFunction<String> tif  ;

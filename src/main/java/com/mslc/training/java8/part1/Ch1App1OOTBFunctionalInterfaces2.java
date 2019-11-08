@@ -11,13 +11,29 @@ public class Ch1App1OOTBFunctionalInterfaces2 {
 
 	public static void main(String[] args) {
 		List<Employee> empList = HealthData.employeeList;
-		List<String> newList = mutateEmployeeToStringLegacy(empList);
-		System.out.println(newList);
-		
-		System.out.println(Function.identity().apply(empList.get(0)));
 
-//		List<String> newList2 = mutateEmployeeToStringJava8(empList, << functional interface >> );
-//		System.out.println(newList2);
+		Function<String, String> f1 = x -> x.toString();
+		Function<String, String> after = f1.compose(x -> x.substring(0, 3));
+		System.out.println(after.apply("Shakir"));
+
+//		
+//		List<String> newList = mutateEmployeeToStringLegacy(empList);
+//		System.out.println(newList);
+//		
+//		System.out.println(Function.identity().apply(empList.get(0)));
+
+		List<String> newList2 = mutateEmployeeToStringJava8(empList, x -> x.getName());
+		System.out.println(newList2);
+
+		Function<Employee, String> employeeMapper = x -> x.getName();
+
+		List<String> newList3 = mutateEmployeeToStringJava8(empList,
+				employeeMapper.andThen(x -> x.substring(0, x.indexOf(" "))));
+		
+		newList3
+		  .forEach(System.out::println);
+		
+		
 
 	}
 
@@ -46,9 +62,14 @@ public class Ch1App1OOTBFunctionalInterfaces2 {
 	 * 
 	 **/
 
-//	public static List<Employee> mutateEmployeeToStringJava8(List<Employee>  input,   << Functional Interface >> ) {
-//		
-//	}
+	public static List<String> mutateEmployeeToStringJava8(List<Employee> input, Function<Employee, String> mapper) {
+		List<String> empNameList = new ArrayList<String>();
+
+		for (Employee emp : input) {
+			empNameList.add(mapper.apply(emp));
+		}
+		return empNameList;
+	}
 
 	public static List<String> mutateEmployeeAndApplyThenLogicLegacy(List<Employee> employeeList) {
 
@@ -76,9 +97,9 @@ public class Ch1App1OOTBFunctionalInterfaces2 {
 
 	/**
 	 * TODO : Exercise 3 Reuse the same 1st (Exercise 1 in this class) higher order
-	 * function that you have written to pass pass a single Functional expression
-	 * but a) using .andThen b) using .compose. In both all the cases, the result
-	 * must be as same as mutateEmployeeAndApplyThenLogicLegacy
+	 * function that you have written to pass a single Functional expression but a)
+	 * using .andThen b) using .compose. In all the cases, the result must be as
+	 * same as mutateEmployeeAndApplyThenLogicLegacy
 	 **/
 
 }

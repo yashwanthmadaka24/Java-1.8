@@ -22,9 +22,8 @@ public class MyStringCollector implements Collector<String, StringCombiner, Stri
 	}
 
 	/**
-	 * A factory method to create the container. In our case - the
-	 * StringCombiner which is analogous to 1st argument provided to the reduce
-	 * function
+	 * A factory method to create the container. In our case - the StringCombiner
+	 * which is analogous to 1st argument provided to the reduce function
 	 * 
 	 */
 	@Override
@@ -40,9 +39,10 @@ public class MyStringCollector implements Collector<String, StringCombiner, Stri
 		// Following is just to demonstrate the use of method reference of
 		// "arbitrary object type"
 
-		BiConsumer<StringCombiner, String> bc = (stringCombiner, word) -> stringCombiner.add(word);
+		// BiConsumer<StringCombiner, String> bc = (stringCombiner, word) ->
+		// stringCombiner.add(word);
 
-		//bc = StringCombiner::add;
+		BiConsumer<StringCombiner, String> bc = StringCombiner::add;
 
 		return bc;
 
@@ -54,9 +54,9 @@ public class MyStringCollector implements Collector<String, StringCombiner, Stri
 		// Following is just to demonstrate the use of method reference of
 		// "arbitrary object type"
 
-		BinaryOperator<StringCombiner> sc = (x, y) -> x.merge(y);
+//		BinaryOperator<StringCombiner> sc = (x, y) -> x.merge(y);
 
-		//sc = StringCombiner::merge;
+		BinaryOperator<StringCombiner> sc = StringCombiner::merge;
 
 		return sc;
 	}
@@ -70,7 +70,7 @@ public class MyStringCollector implements Collector<String, StringCombiner, Stri
 
 				stringCombiner -> stringCombiner.toString();
 
-		//finisher = StringCombiner::toString;
+		// finisher = StringCombiner::toString;
 
 		return finisher;
 	}

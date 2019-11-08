@@ -15,11 +15,14 @@ public class Ch4App6RefactoringAndCustomCollectorsPart1 {
 		// Java 1.7 way of 
 		
 		List<Employee> emps = HealthData.employeeList;
+		
 		StringBuilder builder = new StringBuilder("[");
+		
 		for (Employee emp : emps) {
 
 			if (builder.length() > 1)
 				builder.append(", ");
+			
 			String name = emp.getName();
 			builder.append(name);
 		}

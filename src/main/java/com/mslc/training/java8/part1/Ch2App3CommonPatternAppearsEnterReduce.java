@@ -16,6 +16,16 @@ public class Ch2App3CommonPatternAppearsEnterReduce {
 		 **/
 
 		List<Employee> emps = HealthData.employeeList;
+		
+
+		Employee emp = emps.get(0);
+		for (Employee e : emps) {
+			if (e.getDependentList().size() < emp.getDependentList().size()) {
+				emp = e;
+			}
+		}
+		System.out.println("emp with least dependents : " + emp + " -- " + emp.getDependentList().size());
+
 
 	}
 

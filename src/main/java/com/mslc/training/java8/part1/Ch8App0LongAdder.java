@@ -11,46 +11,35 @@ public class Ch8App0LongAdder {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		
 		LongAdder adder = new LongAdder();
 		adder.increment();
 		adder.increment();
 		adder.increment();
-		
-		
-		
+
 		System.out.println(adder.sum());
-		
-		
-		 LongAdder counter = new LongAdder();
-	        ExecutorService executorService = Executors.newFixedThreadPool(8);
 
-	        int numberOfThreads = 4;
-	        int numberOfIncrements = 100;
+		LongAdder counter = new LongAdder();
+		ExecutorService executorService = Executors.newFixedThreadPool(8);
 
-	        //when
-	        // IntStream.range : startInclusive to endExclusive
-	        Runnable incrementAction = () -> IntStream
-	          .range(0, numberOfIncrements)
-	          .forEach((i) -> counter.increment());
+		int numberOfThreads = 4;
+		int numberOfIncrements = 100;
 
-	        for (int i = 0; i < numberOfThreads; i++) {
-	            executorService.execute(incrementAction);
-	        }
+		// when
+		// IntStream.range : startInclusive to endExclusive
+		Runnable incrementAction = () -> IntStream.range(0, numberOfIncrements).forEach((i) -> counter.increment());
 
-	        //then
-	        executorService.awaitTermination(500, TimeUnit.MILLISECONDS);
-	        executorService.shutdown();
+		for (int i = 0; i < numberOfThreads; i++) {
+			executorService.execute(incrementAction);
+		}
 
-	        System.out.println(counter.sum() + " -- " + (numberOfIncrements * numberOfThreads));
-	        
-		
+		// then
+		executorService.awaitTermination(500, TimeUnit.MILLISECONDS);
+		executorService.shutdown();
+
+		System.out.println(counter.sum() + " -- " + (numberOfIncrements * numberOfThreads));
+
 		DoubleAdder d = new DoubleAdder();
-		
-		
-		
-		
-		
+
 	}
 
 }
